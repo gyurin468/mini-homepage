@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포근한 겨울, 나만의 카페 지도</title>
+
+  <!-- style.css 연결 (index.html과 같은 폴더에 있어야 함) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ❄ 눈송이들 -->
+  <div class="snow-container">
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❄</span>
+  </div>
+
+  <!-- 🎄 연말 장식: 눈사람 & 크리스마스 트리 (화면 하단 양쪽) -->
+  <div class="decor-snowman" aria-hidden="true"></div>
+  <div class="decor-tree" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <header>
+      <h1>Winter Study Cafés</h1>
+      <p>포근한 겨울밤, 공부하기 좋은 나만의 카페</p>
+      <!-- TODO: 연중무휴 + 공부 분위기를 강조하는 문구를 바꾸고 싶다면 여기 수정 -->
+      <p class="cafe-all-open">
+        세 카페 모두 <strong>연중무휴</strong>라, 언제 찾아가도 조용히 공부하기 좋은 분위기를 느낄 수 있어요.
+      </p>
+    </header>
+
+    <main>
+      <section class="cafe-list">
+
+        <!-- =========================
+             버니문
+        ========================== -->
+        <a class="cafe-link" href="https://naver.me/FXwPKB8e" target="_blank">
+          <article class="cafe-card">
+            <!-- TODO: 파일 이름이 다르면 bunnymoon.png 부분을 실제 파일 이름으로 바꾸세요 -->
+            <img src="bunnymoon.png" alt="버니문 카페 사진" class="cafe-photo">
+
+            <!-- ✅ 운영시간 표시 (사진 바로 아래) -->
+            <p class="cafe-hours">
+              <span class="hours-label">운영시간</span>
+              <span class="hours-value">매일 11:00 ~ 23:00</span>
+            </p>
+
+            <div class="cafe-title">
+              <h2>버니문</h2>
+            </div>
+            <p>차분한 조도와 따뜻한 톤으로, 늦은 저녁까지 집중해서 공부하기 좋은 아늑한 공간.</p>
+          </article>
+        </a>
+
+        <!-- =========================
+             프로스콘스
+        ========================== -->
+        <a class="cafe-link" href="https://naver.me/GctEQT2E" target="_blank">
+          <article class="cafe-card">
+            <img src="proscorns.png" alt="프로스콘스 카페 사진" class="cafe-photo">
+
+            <!-- ✅ 운영시간 표시 -->
+            <p class="cafe-hours">
+              <span class="hours-label">운영시간</span>
+              <span class="hours-value">매일 08:00 ~ 23:00</span>
+            </p>
+
+            <div class="cafe-title">
+              <h2>프로스콘스</h2>
+            </div>
+            <p>따뜻한 스콘 향과 함께, 아침부터 밤까지 과제와 공부를 함께하기 좋은 편안한 카페.</p>
+          </article>
+        </a>
+
+        <!-- =========================
+             더스크 커피
+        ========================== -->
+        <a class="cafe-link" href="https://naver.me/GvcYNxCE" target="_blank">
+          <article class="cafe-card">
+            <img src="duskcoffee.png" alt="더스크 커피 사진" class="cafe-photo">
+
+            <!-- ✅ 운영시간 표시 -->
+            <p class="cafe-hours">
+              <span class="hours-label">운영시간</span>
+              <span class="hours-value">매일 11:00 ~ 23:00</span>
+            </p>
+
+            <div class="cafe-title">
+              <h2>더스크 커피</h2>
+            </div>
+            <p>밤 감성 가득한 조명 아래에서, 코딩이나 글쓰기 같은 깊은 작업에 몰입하기 좋은 카페.</p>
+          </article>
+        </a>
+
+      </section>
+      <!-- ❄ 랜덤 겨울 노래 추천 박스 -->
+<section class="random-song-box">
+  <h2 class="song-title-heading">❄ 오늘의 랜덤 추천 노래 ❄</h2>
+  <p id="randomSong" class="random-song-text">불러오는 중...</p>
+  <a id="randomSongLink" href="#" target="_blank" class="song-play-btn">재생하기</a>
+</section>
+
+
+<!-- 랜덤 노래 데이터를 불러오는 JavaScript -->
+<script>
+  // 겨울 감성 10곡 리스트
+  const songs = [
+    { title: "Snowfall – idealism", link: "https://www.youtube.com/results?search_query=Snowfall+idealism" },
+    { title: "First Snow – Stompin’ Tom", link: "https://www.youtube.com/results?search_query=First+Snow+Stompin+Tom" },
+    { title: "coffee breath (lofi remix) – sofia mills", link: "https://www.youtube.com/results?search_query=coffee+breath+sofia+mills+lofi" },
+    { title: "Winter Wind – Luke Bergs", link: "https://www.youtube.com/results?search_query=Winter+Wind+Luke+Bergs" },
+    { title: "Falling Slowly (Lofi Version) – Lofi Fruits", link: "https://www.youtube.com/results?search_query=Falling+Slowly+Lofi+Version+Lofi+Fruits" },
+    { title: "Snowy Village – Yehezkel Raz", link: "https://www.youtube.com/results?search_query=Snowy+Village+Yehezkel+Raz" },
+    { title: "Christmas Snow – Borrtex", link: "https://www.youtube.com/results?search_query=Christmas+Snow+Borrtex" },
+    { title: "Quiet Days – Guillaume Muschalle", link: "https://www.youtube.com/results?search_query=Quiet+Days+Guillaume+Muschalle" },
+    { title: "Warm Winter Night – Purrple Cat", link: "https://www.youtube.com/results?search_query=Warm+Winter+Night+Purrple+Cat" },
+    { title: "Soft Snow – Ocha", link: "https://www.youtube.com/results?search_query=Soft+Snow+Ocha" }
+  ];
+
+  // 랜덤 선택
+  const randomIndex = Math.floor(Math.random() * songs.length);
+  const selectedSong = songs[randomIndex];
+
+  // HTML 태그에 넣기
+  document.getElementById("randomSong").textContent = selectedSong.title;
+  document.getElementById("randomSongLink").href = selectedSong.link;
+</script>
+
+    </main>
+
+    <footer>
+      <span>당신의 포기하지 않는 마음을 응원합니다.</span>
+    </footer>
+  </div><script>
+  // 스크롤 시 요소가 서서히 나타나도록 만드는 IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target); // 한 번 보이면 관찰 종료
+        }
+      });
+    },
+    {
+      threshold: 0.15, // 15% 정도 화면에 들어오면 발동
+    }
+  );
+
+  // .reveal-on-scroll 클래스가 붙은 요소들 관찰 시작
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>
+<div class="snow-ground"></div>
+</body>
+</html>
+
+</body>
+</html>
