@@ -14,3 +14,48 @@
 
 ## 📁 Project Structure
 # mini-homepage
+mini-homepage/
+│── index.html
+│── style.css
+└── images/
+├── cafe1.jpg # 프로스콘스
+├── cafe2.jpg # 버니문
+└── cafe3.jpg # 더스크커피
+
+---
+
+## 🛠️ Tech Stack
+- HTML5  
+- CSS3  
+- JavaScript (랜덤 추천 노래 기능)
+
+---
+
+## ✨ Features
+### ✔ 눈송이 애니메이션  
+CSS animation을 활용하여 상단에 눈이 내리는 효과 구현.
+
+### ✔ 카페 3곳 소개  
+카페 이미지 + 간단한 설명  
+이미지 클릭 시 해당 카페의 상세 페이지로 이동.
+
+### ✔ 랜덤 추천 노래  
+홈페이지 접속 시 무작위로 배경 음악을 추천해주는 기능.
+
+---
+
+## 🔧 Recent Updates
+- 이미지 추가 및 교체  
+- 전체 레이아웃 수정  
+- 눈송이 CSS 애니메이션 추가  
+- 카페 상세 페이지와 링크 연결 완성  
+
+---
+
+## 📌 To-do
+- 배경에 조명(연말 감성) 디자인 추가 예정
+
+---
+
+## 📜 License
+This project is for a university assignment.
