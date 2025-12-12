@@ -230,3 +230,113 @@ header p {
     box-shadow: 0 0 12px #ffffffee, 0 0 26px #ffffffaa;
   }
 }
+/* ===== string lights ===== */
+.string-lights {
+  position: absolute; /* header가 relative여야 작동 */
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 120px; /* 필요에 따라 조절 */
+  pointer-events: none;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+/* 전선(라인) */
+.string-lights .string-line {
+  position: absolute;
+  top: 34px;
+  left: 4%;
+  right: 4%;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(60,60,60,0.95), rgba(40,40,40,0.7));
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* 전구 기본 스타일 */
+.string-lights .light-bulb {
+  --size: 18px;
+  width: var(--size);
+  height: var(--size);
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 12px;
+  position: relative;
+  top: 10px; /* 매달린 높이 */
+  transform-origin: center top;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35), inset 0 -3px 6px rgba(255,255,255,0.06);
+  transition: transform 240ms ease;
+}
+
+/* 매달린 꼬리 */
+.string-lights .light-bulb::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+  width: 2px;
+  height: 10px;
+  background: rgba(70,70,70,0.95);
+  border-radius: 1px;
+}
+
+/* 색상별 전구 (data-color 속성 사용) */
+.string-lights .light-bulb[data-color="warm"] {
+  background: radial-gradient(circle at 35% 30%, #fff8e6 0%, #ffd37a 25%, #ff9d3b 65%, #b85b12 100%);
+  box-shadow: 0 6px 18px rgba(255,160,80,0.22);
+}
+.string-lights .light-bulb[data-color="cool"] {
+  background: radial-gradient(circle at 35% 30%, #e8f7ff 0%, #bfeaff 25%, #75c7ff 60%, #236a9a 100%);
+  box-shadow: 0 6px 18px rgba(120,190,255,0.18);
+}
+.string-lights .light-bulb[data-color="red"] {
+  background: radial-gradient(circle at 35% 30%, #ffdfe2 0%, #ff9aa9 25%, #ff5a76 65%, #8b2230 100%);
+  box-shadow: 0 6px 18px rgba(255,90,110,0.20);
+}
+.string-lights .light-bulb[data-color="green"] {
+  background: radial-gradient(circle at 35% 30%, #eaffe6 0%, #aef2b8 25%, #65d06d 60%, #1f6d3a 100%);
+  box-shadow: 0 6px 18px rgba(90,200,120,0.16);
+}
+
+/* 흔들리는 느낌 */
+.string-lights .light-bulb {
+  animation: sway 6s ease-in-out infinite;
+}
+.string-lights .light-bulb:nth-child(odd) { animation-duration: 5.6s; }
+.string-lights .light-bulb:nth-child(even) { animation-duration: 6.3s; }
+
+@keyframes sway {
+  0% { transform: translateY(0) rotate(-1deg); }
+  25% { transform: translateY(2px) rotate(1deg); }
+  50% { transform: translateY(0) rotate(-1deg); }
+  75% { transform: translateY(1px) rotate(0.5deg); }
+  100% { transform: translateY(0) rotate(-1deg); }
+}
+
+/* 깜빡임 애니메이션 (JS가 각 전구에 delay/duration을 넣음) */
+.string-lights .light-bulb.twinkle {
+  animation-name: twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes twinkle {
+  0% { filter: brightness(1); transform: translateY(0) scale(1); }
+  20% { filter: brightness(1.8); transform: translateY(-1px) scale(1.04); }
+  40% { filter: brightness(0.9); transform: translateY(0) scale(0.98); }
+  60% { filter: brightness(1.4); transform: translateY(-0.5px) scale(1.02); }
+  100% { filter: brightness(1); transform: translateY(0) scale(1); }
+}
+
+/* 모바일에서 약간 축소 */
+@media (max-width: 600px) {
+  .string-lights { height: 90px; top: 2px; }
+  .string-lights .light-bulb { --size: 14px; margin: 0 8px; top: 8px; }
+  .string-lights .string-line { top: 28px; }
+}
+
