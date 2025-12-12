@@ -59,3 +59,7 @@ CSS animation을 활용하여 상단에 눈이 내리는 효과 구현.
 
 ## 📜 License
 This project is for a university assignment.
+# Mini Homepage Project
+- Winter theme added
+- Lights and snowman will be added
+
